@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../../vue.js"></script>
+
+    <div id="app">
+        输入框：
+        <input type="text" v-model="msg" placeholder="请输入内容"/> 
+        <p>{{msg}}</p>
+        <hr>
+
+        textarea:
+        <textarea v-model="txt"  style="white-space:pre" placeholder="请输入内容">我是textarea标签对中的插入文字</textarea>
+        <p>{{txt}}</p>
+        <hr>
+
+        oninput事件：
+        <input type="text" @input="handleInput" placeholder="pls insert you wanna...">
+        <p>{{msg1}}</p>
+        <hr>
+
+        单选按钮：
+        <input type="radio" :checked="picked" ref="singleChoice">
+    </div>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'',
+                txt:'',
+                msg1:'',
+                picked:true,
+            },
+            methods:{
+                handleInput:function(e){
+                    console.log(e)//InputEvent对象
+                    this.msg1 = e.target.value;
+                }
+            }
+        })
+        vm.$refs.singleChoice.onclick = function(){
+            vm.picked = !vm.picked
+        }
+    </script>
+</body>
+</html>

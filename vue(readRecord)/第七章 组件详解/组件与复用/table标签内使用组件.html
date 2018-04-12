@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <script src="../vue.js"></script>
+     <div id="app">
+         <table>
+             <!-- Vue组件的模板在某些情况下回收到HTML的限制，
+                比如在table标签内规定只允许只用tr th td等表格元素，
+                所以在table中直接使用组件是无效的
+                可以使用特殊的is属性来挂载组件
+                如果使用的是字符串模板，是不受限制的
+             -->
+             <tbody is='my-component'>
+             </tbody>
+             <!-- tbody在渲染时，会被替换为组件的内容 -->
+         </table>
+     </div>
+     <script>
+         let vm = new Vue({
+             el:'#app',
+             components:{
+                 'my-component':{
+                     template:'<div>这个是表格中的组件</div>'
+                 }
+             }
+         })
+     </script>
+</body>
+</html>

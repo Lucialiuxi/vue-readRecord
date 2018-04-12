@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			
+		</style>
+		<script src="./vue.js"></script>
+		<script>
+			/*
+				组件 元件
+				
+				完整的电脑：
+					1. CPU
+					2. 内存
+					3. 硬盘
+					4. 显示器
+					5. 键盘
+					6. USB
+					7. 鼠标
+
+				完整的电脑，是由以上部分组成，以上每一个组成部分都是独立的
+				可以更新替换某一个部分，不会影响其他的部分正常工作
+
+				组成部分功能是固定的，根据不同的输入，有不同的输出
+
+				组件化开发
+					组件可以将UI页面切分成一些单独的、独立的单元，整个页面就是这些单元组合而成的，只需要关注构建每个单独的单元，每个组件包含自己的结构、逻辑和样式，这样既减少了逻辑复杂度，又能实现组件的复用性。当不需要某个组件或替换组件时，而不影响整个应用的运行。
+
+					       组件开发的好处：
+							降低耦合度、
+							提高可维护性、可复用性
+							便与协作开发
+
+				组件三个组成：
+					有结构  必须
+					样式
+					逻辑
+
+				Vue中组件
+					组件是自定义元素，Vue.js 的编译器为它添加特殊功能
+					所有的 Vue 组件同时也都是实例，所以可接受相同的 选项对象
+
+					1. 组件是自定义元素
+					2. 添加特殊功能
+					3. Vue 组件是实例
+
+
+			原生标签中就有组件
+				input
+				select
+				textarea
+
+			*/
+		</script>
+		<script type="text/x-template" id="news">
+			<div>
+				<h1>hello,是新闻组件</h1>
+				<ul>
+					<li>hello</li>
+					<li>hello</li>
+					<li>hello</li>
+					<li>hello</li>
+				</ul>
+			</div>
+		</script>
+	</head>
+
+	<body>
+		<miaov>hello</miaov>
+		<news></news>
+
+		<div id="app">
+			<h1>组件的学习</h1>
+			<!--
+				Vue解析这个自定义标签，把它当成自定义的组件
+				把组件的结构替换在这个位置
+			-->
+			<news-list-miaov></news-list-miaov>
+		</div>
+		<script>
+			// 以上写的miaov和news浏览器不认识自定义的标签，也就无法添加特殊功能
+
+			// 用到Vue来解析
+
+			/*
+				使用组件之前先注册组件
+					1. 全局注册
+						任何地方都可以使用
+						先注册，后new Vue
+						
+						Vue.component(组件id/标识,选项对象)
+							未来在模板中把标识当成标签使用
+							<标识></标识>
+
+							标识符的命名
+								1. 唯一
+								2. 驼峰和烤串命名法
+									miaovKetang
+									MiaovKetang
+									miaov-ketang-leo
+
+									使用的时候必须使用烤串命名法
+							模板
+								1. 只能有一个根元素
+								2. 可以把模板放在script标签中 type设置为text/x-template
+
+							组件中选项对象和根实例中选项对象基本一样，另个地方不同
+								el: 只有根实例的选项对象才有
+								data: 组件的data必须是函数
+
+					2. 局部注册
+			*/
+
+			Vue.component('news-list-miaov',{
+				template: '#news'
+			});
+
+
+
+			new Vue({
+				el: '#app'
+			})
+
+		</script>
+	</body>
+</html>

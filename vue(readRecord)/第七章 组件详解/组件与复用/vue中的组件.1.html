@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<script src="./vue.js"></script>
+		<script type="text/x-template" id="news">
+			<div>
+				<h1>{{title}}</h1>
+				<ul>
+					<li v-for="item in list">{{item}}</li>
+				</ul>
+			</div>
+		</script>
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>组件的学习</h1>
+			<news :title="title1" :list = "list1"></news>
+			<news :title="title2" :list = "list2"></news>
+		</div>
+		<script>
+			Vue.component('news',{
+				props:['title','list'],
+				template:'#news',
+				method:{
+					clickHandle(){
+						console.log(this)
+					}
+				}
+			})
+			let title1 = '体育新闻';
+			let title2 = '娱乐新闻';
+			
+			new Vue({
+				el:'#app',
+				data:{
+					title1,
+					title2,
+					list1:[1,2,3,4,5,6],
+					list2:['a','b','c','d']
+				}
+			})
+
+
+		</script>
+	</body>
+</html>

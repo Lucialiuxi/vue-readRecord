@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="../vue.js"></script>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item,index of book">{{index}}:{{item.name}}</li>
+        </ul>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                book:[
+                    {name:'Vue.js实战'},
+                    {name:'JavaScript语言精粹'},
+                    {name:'JavaScript高级程序设计'},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

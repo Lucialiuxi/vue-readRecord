@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./shoppingCart.css">
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <th></th>
+                <th>商品名称</th>
+                <th>商品单价</th>
+                <th>购买数量</th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>iphone7</td>
+                    <td>6188</td>
+                    <td>
+                        <span class="decrease">-</span>
+                        <span>1</span>
+                        <span class="increase">+</span>
+                    </td>
+                    <td>
+                        <button>移除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../../vue.js"></script>
+    <script src="./shoppingCart.js"></script>
+</body>
+</html>

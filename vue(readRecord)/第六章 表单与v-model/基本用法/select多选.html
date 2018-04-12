@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>W3Cschool教程(w3cschool.cn)</title>
+    </head>
+    <body>
+        <script src="../../vue.js"></script>
+        <div id="app">
+            <form>
+                <!--  size="2" 设置之后，展开只会显示2个选项，需要上下滚动查看其它选项 -->
+                <select 
+                    id="mySelect" 
+                    size="2" 
+                    multiple
+                    v-model="selected"
+                >
+                  <option>Apple</option>
+                  <option>Pear</option>
+                  <option>Banana</option>
+                  <option>Orange</option>
+                </select>
+            </form> 
+            <p>要选择的项：{{selected}}</p>
+            <br>
+            <p>按下Ctrl键来选择多个选项</p>
+        </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                selected:[],
+            }
+        })
+    </script>
+    </body>
+</html>

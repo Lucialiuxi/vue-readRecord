@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="../../vue.js"></script>
+<body>
+    <div id="app">
+        <p>总数：{{total}}</p>
+        <sum @input="handleGetTotal"></sum>
+    </div>
+    <script>
+        Vue.component('sum',{
+            model:{
+                props:this.counter
+            },
+            props:['value'],
+            template:`
+                <button @click="handleClick">+1</button>
+            
+            `,
+            data(){
+                return {
+                    counter:0
+                }
+            },
+            methods:{
+                handleClick(){
+                    this.counter++;
+                    this.$emit('input',this.counter)
+                }
+            }
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                total:0
+            },
+            methods:{
+                handleGetTotal(total){
+                    this.total = total;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

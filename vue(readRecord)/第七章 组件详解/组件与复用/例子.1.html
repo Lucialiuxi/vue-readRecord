@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			.tab{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #000;
+			}
+			#app > div {
+				display: inline-block;
+				margin: 50px;
+			}
+		</style>
+		<script src="./vue.js"></script>
+	</head>
+	<script>
+		/*
+			1. 把class为.tab的封装成一个组件
+			2. 在封装的组件内部可以单选一个颜色
+			3. 当点击组件内的确定，分别改变button和p标签的颜色为组件内选中的颜色
+		*/
+	</script>
+	<script type="text/x-template" id="">
+		
+	</script>
+	<body>
+		<div id="app">
+				<div>
+					<h1>{{title1}}</h1>
+					<div>
+						<button :style="{color : color1}">改变我的颜色</button>
+						<tab  @click-btn="parentHandle"></tab>
+					</div>
+				</div>
+				<div>
+					<h1>{{title2}}</h1>
+					<div>
+						<p :style="{color : color2}">改变我的颜色</p>
+						<tab  @click-btn="parentHandle1"></tab>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			Vue.component('tab',{
+				props:[],
+				data:function(){
+					return {
+						color:['green','yellow','red'],
+						currentId:''
+					}
+				},
+				template:`
+					<div class = "tab">
+						<ul>
+							<li ref="li"
+								v-for="item,index in color"
+								:style="{background : currentId === index ? 'red' : ''}"
+								@click=" currentId = index "
+							>{{item}}</li>
+						</ul>
+						<button>取消</button>
+						<button @click="clickHandle">确定</button>
+					</div>
+				`,
+				methods:{
+					clickHandle(){
+						console.log(this.color[this.currentId])
+						this.$emit('click-btn',this.color[this.currentId])
+					}
+
+				}
+			})
+
+			let vm = new Vue({
+				el:'#app',
+				data:{
+					title1:'第一个面板',
+					title2:'第二个面板',
+					color1:'',
+					color2:''
+				},
+				methods:{
+					parentHandle(params){
+						console.log('父组件触发',params)
+						this.color1 = params	
+					},
+					parentHandle1(params){
+						console.log('父组件触发',params)
+						this.color2 = params	
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

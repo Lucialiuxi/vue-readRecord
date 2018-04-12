@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="./vue.js"></script>
+<body>
+    <div id="app">
+       <h1>props验证</h1>
+       <new title="今天冷死了"></new>
+       <hr>
+       <new title="1"></new>
+       <hr>
+       <!-- 写了为空会解析为空字符串 -->
+       <new title=""></new>
+       <hr>
+       <!-- 不写就会报错，required:true,设置之后是必须要写的 -->
+       <new n="20" title="今天冷死了++++"></new>
+    </div>
+    <script>
+         Vue.component('new',{ 
+             props:{
+                // title:String,
+                // title:{
+                //     title:[String,Number],
+                //     default:'随便来个标题吧'
+                // },
+                title:{
+                    title:[String,Number],
+                    required:true,
+                },
+                list:{
+                    type:Array,
+                    default(){
+                        return [];
+                    }
+                },
+                // n:{
+                //     default:0
+                // },
+                n:{
+                    validator:function(value){
+                        // 返回true通过，false不通过
+                        return value > 10
+                    }
+                }
+            },
+            template:`
+                    <div>
+                        <h2>标题是：{{title}}</h2>
+                        <p>n的值是：{{n}}</P>
+                        <ul>
+                            <li>1</li>
+                            <li>1</li>
+                            <li>1</li>
+                        </ul>
+                    </div>
+                    `,
+           
+        })
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+
+            }
+        })
+        // console.log(Number(''))
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<script src="./vue.js"></script>
+
+		<script type="text/x-template" id="test">
+			<div>
+				<h2>{{a.bigTitle}}</h2>
+				<ul>
+					<li v-for="item in a.list">{{item.title}}</li>
+				</ul>
+			</div>
+		</script>
+
+	</head>
+	<body>
+		<div id="app">
+			<test
+				:a="item"
+				v-for="item in newsList"
+				:key="item.bigTitle"
+			></test>
+		</div>
+		<script>
+			let newsList = [
+				{
+					bigTitle: '体育新闻',
+					list: [
+						{
+							title: '体育新闻1'
+						},
+						{
+							title: '体育新闻2'
+						}
+					]
+				},
+				{
+					bigTitle: '娱乐新闻',
+					list: [
+						{
+							title: '娱乐新闻1'
+						},
+						{
+							title: '娱乐新闻2'
+						}
+					]
+				}
+			]
+			//注册组件
+			Vue.component('test',{
+				props:['a'],
+				template:"#test",
+				data:function(){
+					return {
+
+					}
+				}
+			})
+
+			//根实例
+			let VM = new Vue({
+				el:'#app',
+				data:{
+					newsList
+				},
+				methods:{
+
+				}
+			})
+		</script>
+	</body>
+</html>

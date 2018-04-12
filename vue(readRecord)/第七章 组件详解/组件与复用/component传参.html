@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/x-template" id="tpt">
+        <div>
+            <h1>{{title}}</h1>
+            <ul>
+                <li v-for="item in list">{{item}}</li>
+            </ul>
+        </div>
+    </script>
+    <div id="app">
+        <news title="标语" :list="[ 'fighting1','fighting2','fighting3','fighting4','fighting5']"></news> 
+        <news title="学习" :list="[1,2,3,4,5,6,8]"></news> 
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component('news',{
+            template:'#tpt',
+            props:['title','list'],
+            data:function(){
+                return {
+                   
+                }
+            },
+            methods:{
+                
+            }
+        })
+        let app = new Vue({
+            el:'#app',
+        })
+    </script>
+</body>
+</html>

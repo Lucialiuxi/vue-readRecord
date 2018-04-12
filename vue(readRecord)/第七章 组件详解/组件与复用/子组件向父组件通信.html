@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="./vue.js"></script>
+<body>
+    <div id="app">
+        <h1>组件的学习</h1>
+        <button @click="title1='123'">父组件改变title</button>
+        <news :title="title1"></news>
+        
+    </div>
+    <script>
+        Vue.component('news',{
+            data(){
+                return {
+                    newsData:'123',
+                    selfTitle:this.title
+                }
+            },
+            props:{
+                title:{
+                    type:[String,Number],
+                    require:true,
+                }
+            },
+            template:`
+                <div>
+                    <h2>{{title}}</h2>
+                    <button @click="title='子数据'">子组件改变title</button>  
+                    <hr />
+
+                    <h2>{{selfTitle}}</h2>
+                    <button @click="selfTitle='子数据1'">子组件改变selfTitle</button>
+                    <hr />
+                    
+                    <h3>news自己的数据</h3>
+                    <p>{{newsData}}</p>
+                    <button @click="newsData='修改自己的数据'">改变newsData</button>
+
+                </div>
+            
+            
+            `,
+            methods:{
+
+            }
+        })
+
+        new Vue({
+            el:'#app',
+            data:{
+                title1:'体育新闻'
+            }
+        })
+    </script>
+</body>
+</html>

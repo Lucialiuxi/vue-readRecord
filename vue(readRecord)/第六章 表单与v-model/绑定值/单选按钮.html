@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../../vue.js"></script>
+    <div id="app">
+        <input 
+            type="radio" 
+            v-model="picked" 
+            :value="value"
+        >
+        <label>按钮</label>
+        <!-- 点击单选按钮之后。这个p标签的内容变为了123 -->
+        <p>{{picked}}</p>
+        <p>{{value}}</p>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                picked:false,
+                value:123
+            }
+        })
+    </script>
+</body>
+</html>

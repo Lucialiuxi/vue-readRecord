@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../../vue.js"></script>
+    <div id="app">
+        <input 
+            type="checkbox" 
+            v-model="toggle"
+            :true-value="value1"
+            :false-value="value2"
+        >
+        <p>选中是：{{value1}}</p>
+        <p>没有选中是：{{value2}}</p>
+        <p>现在的状态是：{{toggle}}</p>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                toggle:false,
+                value1:'a',
+                value2:'b'
+            }
+        })
+    </script>
+</body>
+</html>

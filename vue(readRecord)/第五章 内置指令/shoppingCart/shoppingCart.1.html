@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./shoppingCart.css">
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <th></th>
+                <th>商品名称</th>
+                <th>商品单价</th>
+                <th>购买数量</th>
+                <th>操作</th>
+            </thead>
+            <tbody>
+                <template 
+                    v-for = "item in list"
+                >
+                    <tr>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>
+                            <span 
+                                class="decrease"
+                                @click.prevent = "item.count > 0 ? item.count-- : item.count=0"
+                            >-</span>
+                            <span>{{item.count}}</span>
+                            <span 
+                                class="increase"
+                                @click.prevent = "item.count++"
+                            >+</span>
+                        </td>
+                        <td>
+                            <button @click="remove(item)">移除</button>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+            <tfoot>
+                <tr><td>总价：{{countPrice}}</td></tr>
+            </tfoot>
+        </table>
+    </div>
+    <script src="../../vue.js"></script>
+    <script src="./shoppingCart.js"></script>
+</body>
+</html>

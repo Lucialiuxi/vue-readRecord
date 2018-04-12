@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<script src="../vue.js"></script>
+<body>
+    <div id="app">
+        <span v-for="n,index in 10">{{index}}:{{n}}</span>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app'
+        })
+    </script>
+    <!-- 渲染后的结果是：
+        0:11:22:33:44:55:66:77:88:99:10
+    -->
+</body>
+</html>

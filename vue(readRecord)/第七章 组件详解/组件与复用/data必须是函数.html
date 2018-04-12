@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="./vue.js"></script>
+<body>
+    <div id="app">
+        <h1>组件的data必须是函数</h1>
+        <news title="娱乐新闻"></news>
+        <hr>
+        <beauty></beauty>
+
+        
+    </div>
+    <script>
+        let obj = {easy:'这个是easy的自定义值'}
+        Vue.component('news',{
+            template:`
+                    <div>
+                        <h2>{{title}}</h2>
+                        <p>{{easy}}</p>
+                        <button @click="easy='改变了'">改变easy</button>
+                    </div>
+                    `
+            ,
+            props:{
+                title:{
+                    type:[String,Number],
+                    default:'这个是随便想出来的一段话'
+                }
+            },
+            data(){
+                return {...obj}
+            }
+        })
+
+        Vue.component('beauty',{
+            template:`
+                    <div>
+                        <p>easy</p>
+                        <h2>{{easy}}</h2>
+                    </div>
+                    `
+            ,
+            data(){
+                return {...obj}
+            }
+        })
+
+        let vm = new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>
