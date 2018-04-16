@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../../vue.js"></script>
+    <div id="app">
+        <!-- 
+            使用元素<component>来动态挂载不同的组件，
+            使用is特性来选择要挂载的组件
+         -->
+        <component :is="currentView"></component>
+    </div>
+    <script>
+        var home={
+            template:'<div>组件A</div>'
+        }
+        
+        var app = new Vue({
+            el:'#app',
+            data:{
+                currentView:home
+            }
+        })
+    </script>
+</body>
+</html>

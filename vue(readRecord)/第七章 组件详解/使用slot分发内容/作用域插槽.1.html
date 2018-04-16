@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        作用域插槽是一种特殊的slot，使用一个可以复用的模板替换已渲染元素
+     -->
+    <script src="../../vue.js"></script>
+    <div id="app">
+        <!-- 把父组件books数据动态绑定传给子组件 -->
+        <my-list :books="books">
+            <!-- 作用域插槽也可以是具名的slot  
+                props变量是自组件传给父组件的参数的集合，是一个对象
+            -->
+            <template slot="book" slot-scope="props">
+                <li>{{props.bookName}}</li>
+            </template>
+        </my-list>
+    </div>
+    <script>
+        Vue.component('my-list',{
+            props:{
+                books:{
+                    type:Array,
+                    default:function(){
+                        return []
+                    }
+                }
+            }
+            ,
+            template: `
+                    <ul>
+                        <slot 
+                            name="book"
+                            v-for="(book,index) in books"
+                            :book-name="book.name"
+                        ></slot>
+                    </ul> 
+                    `
+
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                books:[
+                    {
+                        name:'《Vue.js实战》'
+                    },
+                    {
+                        name:'《Node.js实战》'
+                    },
+                    {
+                        name:'《ES6》'
+                    },
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
